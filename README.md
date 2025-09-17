@@ -1,4 +1,4 @@
-# Appunti — Elementi di Informatica Teorica (LuaLaTeX)
+# Template per appunti in latex — (LuaLaTeX)
 
 Progetto LaTeX pronto all'uso per scrivere appunti con **blocchi tipografici** (Definizioni, Teoremi, Lemmi, ecc.), **liste automatiche**, **numerazione centralizzata**, **titolo di Dimostrazione leggibile** e **build** semplice via `make`.
 
