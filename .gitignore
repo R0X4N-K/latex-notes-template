@@ -1,0 +1,25 @@
+# Ignora la cartella di compilazione
+build/
+
+# File temporanei di LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+
+# Backup files
+*.bak
+*~
+*.swp
+
+# File generati da editor
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,63 @@
+\chapter{Test dei blocchi}
+
+\section{Concetti base}
+
+\begin{definizione}{Alfabeto}{alfabeto}
+Un \term{alfabeto} è un insieme finito e non vuoto di simboli, tipicamente denotato con $\Sigma$.
+\end{definizione}
+
+\begin{teorema}{Chomsky}{chomsky}
+Ogni grammatica regolare genera un linguaggio regolare.
+\end{teorema}
+
+\begin{dimostrazione}[del Teorema~\ref{thm:chomsky}]
+Schizzo: costruisci un automa a stati finiti equivalente alla grammatica,
+con stati che rappresentano i non terminali.
+\end{dimostrazione}
+
+\begin{lemma}{Lemma d'esempio}{finito-regolare}
+Se un linguaggio è finito, allora è regolare.
+\end{lemma}
+
+\begin{dimostrazione}[del Lemma~\ref{lem:finito-regolare}]
+Costruisci un AFD che riconosce l’unione finita di stringhe: ogni stringa accettata
+corrisponde a un cammino verso uno stato finale distinto.
+\end{dimostrazione}
+
+\begin{proposizione}{Chiusura rispetto all’unione}{chiusura-unione}
+L’insieme dei linguaggi regolari è chiuso rispetto all’unione.
+\end{proposizione}
+
+\begin{corollario}{Dall’intersezione al complemento}{intersezione}
+Poiché i linguaggi regolari sono chiusi rispetto al complemento e all’unione,
+lo sono anche rispetto all’intersezione.
+\end{corollario}
+
+\begin{assioma}{Assioma di scelta (esempio fittizio)}{scelta}
+Dato un insieme di insiemi non vuoti, è possibile scegliere un elemento da ciascuno.
+\end{assioma}
+
+\section{Blocchi pratici}
+
+\begin{esempio}{Parità di $1$}{parita1}
+Per $\Sigma=\{0,1\}$, il linguaggio delle stringhe con numero pari di $1$ è regolare.
+\end{esempio}
+
+\begin{esercizio}{AFD su multipli di 3}{afd-mod3}
+Progetta un AFD che riconosce le stringhe di $\{a,b\}^*$ con un numero di $a$ multiplo di $3$.
+\end{esercizio}
+
+\begin{nota}{Nota importante}
+Ricorda che un automa può essere non deterministico, ma si può sempre costruire un DFA equivalente.
+\end{nota}
+
+\begin{attenzione}{Errore comune}
+Non confondere \term{linguaggi regolari} con \term{grammatiche lineari destre}:
+sono concetti diversi, sebbene collegati.
+\end{attenzione}
+
+\begin{suggerimento}{Strategia di risoluzione}
+Quando puoi, disegna prima l’automa e poi formalizzalo con la quintupla.
+\end{suggerimento}
+
+\clearpage

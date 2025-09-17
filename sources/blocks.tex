@@ -1,0 +1,207 @@
+% --- Tavolozza colori ---
+\colorlet{thmFrame}{uninaPrimary}
+\colorlet{thmBack}{uninaPrimary!5}
+
+\colorlet{defFrame}{uninaSecondary!90!black}
+\colorlet{defBack}{uninaSecondary!8}
+
+\colorlet{noteFrame}{black!40}
+\colorlet{noteBack}{black!4}
+
+\colorlet{warnFrame}{orange!85!black}
+\colorlet{warnBack}{orange!10}
+
+\colorlet{suggFrame}{uninaPrimary!70!black}
+\colorlet{suggBack}{uninaPrimary!12}
+
+% --- Stile generale ---
+\tcbset{
+  before skip=8pt, after skip=8pt,
+  boxrule=0.6pt,
+  sharp corners,
+  breakable,
+}
+
+% --- Numerazione centralizzata dei blocchi ---
+% Cambia "section" -> "chapter" se preferisci numerare per capitolo.
+\providecommand{\tcbwithin}{section}
+
+
+% -----------------------
+% Ambienti teorematici
+% -----------------------
+% Titolo OBBLIGATORIO { ... } per tutti.
+% 'number within=section' e 'list inside=<nome>' stanno nelle INIT OPTIONS [ ... ].
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=definizione
+]{definizione}{Definizione}{%
+  enhanced,
+  colback=defBack, colframe=defFrame,
+  colbacktitle=defFrame, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{def}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=teorema
+]{teorema}{Teorema}{%
+  enhanced,
+  colback=thmBack, colframe=thmFrame,
+  colbacktitle=thmFrame, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{thm}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=lemma
+]{lemma}{Lemma}{%
+  enhanced,
+  colback=thmBack, colframe=thmFrame!85!black,
+  colbacktitle=thmFrame!85!black, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{lem}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=proposizione
+]{proposizione}{Proposizione}{%
+  enhanced,
+  colback=thmBack, colframe=thmFrame!70!black,
+  colbacktitle=thmFrame!70!black, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{prop}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=corollario
+]{corollario}{Corollario}{%
+  enhanced,
+  colback=thmBack, colframe=thmFrame!60!black,
+  colbacktitle=thmFrame!60!black, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{cor}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=assioma
+]{assioma}{Assioma}{%
+  enhanced,
+  colback=thmBack, colframe=thmFrame!50!black,
+  colbacktitle=thmFrame!50!black, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{axs}
+
+% -----------------------
+% Blocchi pratici (numerati)
+% -----------------------
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=esempio
+]{esempio}{Esempio}{%
+  enhanced,
+  colback=noteBack, colframe=noteFrame,
+  colbacktitle=noteFrame, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{ex}
+
+\NewTcbTheorem[
+  number within=\tcbwithin,
+  list inside=esercizio
+]{esercizio}{Esercizio}{%
+  enhanced,
+  colback=suggBack, colframe=suggFrame,
+  colbacktitle=suggFrame, coltitle=white, fonttitle=\bfseries,
+  boxed title style={sharp corners},
+}{exr}
+
+
+% -----------------------
+% Blocchi informativi (non numerati)
+% -----------------------
+\newtcolorbox{nota}[1]{%
+  enhanced, title={#1}, fonttitle=\bfseries,
+  colback=noteBack, colframe=noteFrame,
+  colbacktitle=noteFrame, coltitle=white,
+  boxed title style={sharp corners},
+}
+
+\newtcolorbox{attenzione}[1]{%
+  enhanced, title={#1}, fonttitle=\bfseries,
+  colback=warnBack, colframe=warnFrame,
+  colbacktitle=warnFrame, coltitle=white,
+  boxed title style={sharp corners},
+}
+
+\newtcolorbox{suggerimento}[1]{%
+  enhanced, title={#1}, fonttitle=\bfseries,
+  colback=suggBack, colframe=suggFrame,
+  colbacktitle=suggFrame, coltitle=white,
+  boxed title style={sharp corners},
+}
+
+% -----------------------
+% Dimostrazione (box) — titolo opzionale [ ... ]
+% -----------------------
+% Uso:
+% \begin{dimostrazione}[del Teorema~\ref{thm:...}]
+%   ...
+% \end{dimostrazione}
+\newtcolorbox{dimostrazione}[1][]{%
+  enhanced, breakable,
+  colback=white, colframe=thmFrame!70!black,
+  colbacktitle=thmFrame!70!black,
+  coltitle=white, fonttitle=\bfseries,
+  % Link bianchi nel titolo (anche dentro \ref nel tuo [ ... ])
+  title={\begingroup
+           \hypersetup{linkcolor=white,citecolor=white,urlcolor=white}%
+           Dimostrazione~#1%
+         \endgroup},
+  boxed title style={sharp corners},
+}
+
+
+
+% -----------------------
+% Altri comandi
+% -----------------------
+\newcommand{\term}[1]{\textbf{\textcolor{uninaSecondary}{#1}}}
+
+% Nessun quadratino nero automatico
+\renewcommand{\qedsymbol}{}
+
+% -----------------------
+% Wrapper per stampare le liste globali (con voce in ToC)
+% -----------------------
+\newcommand{\listofteorema}{%
+  \tcblistof[\chapter*]{teorema}{Lista dei Teoremi}%
+  \addcontentsline{toc}{chapter}{Lista dei Teoremi}}
+
+\newcommand{\listofdefinizione}{%
+  \tcblistof[\chapter*]{definizione}{Lista delle Definizioni}%
+  \addcontentsline{toc}{chapter}{Lista delle Definizioni}}
+
+\newcommand{\listoflemma}{%
+  \tcblistof[\chapter*]{lemma}{Lista dei Lemmi}%
+  \addcontentsline{toc}{chapter}{Lista dei Lemmi}}
+
+\newcommand{\listofproposizione}{%
+  \tcblistof[\chapter*]{proposizione}{Lista delle Proposizioni}%
+  \addcontentsline{toc}{chapter}{Lista delle Proposizioni}}
+
+\newcommand{\listofcorollario}{%
+  \tcblistof[\chapter*]{corollario}{Lista dei Corollari}%
+  \addcontentsline{toc}{chapter}{Lista dei Corollari}}
+
+\newcommand{\listofassioma}{%
+  \tcblistof[\chapter*]{assioma}{Lista degli Assiomi}%
+  \addcontentsline{toc}{chapter}{Lista degli Assiomi}}
+
+\newcommand{\listofesempio}{%
+  \tcblistof[\chapter*]{esempio}{Lista degli Esempi}%
+  \addcontentsline{toc}{chapter}{Lista degli Esempi}}
+
+\newcommand{\listofesercizio}{%
+  \tcblistof[\chapter*]{esercizio}{Lista degli Esercizi}%
+  \addcontentsline{toc}{chapter}{Lista degli Esercizi}}
